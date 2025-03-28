@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+    <script>
+        let liczba1 = parseInt(prompt("podaj pierwszą liczbę: "))
+        let liczba2 = parseInt(prompt("podaj drugą liczbę: "))
+
+        if(!isNaN(liczba1) &&  !isNaN(liczba2)) {
+            alert("Suma: " + (liczba1+liczba2))
+        } else{
+            alert("wprowadź poprawną liczbę")
+        }
+    </script>
+</body>
+</html>

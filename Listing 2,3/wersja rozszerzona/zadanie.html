@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technologie webowe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <style>
+    body{
+      background: #101010;
+      color: beige;
+      display: grid;
+      place-items: center;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-size: 4vh;
+      font-family: 'Roboto',sans-serif;
+    }
+
+    #kontener{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 70vw;
+      text-align: center;
+      gap: 1vh;
+    }
+    .przycisk{
+      border: 0;
+      width: 16.5vh;
+      height: 16.5vh;
+      transition: all 0.2s ease-out;
+    }
+    .przycisk:nth-child(1){
+      background: url("./img/html_button.png");
+      background-size: cover;
+    }
+    .przycisk:nth-child(2){
+      background: url("./img/js_button.png");
+      background-size: cover;
+    }
+    .przycisk:nth-child(3){
+      background: url("./img/css_button.png");
+      background-size: cover;
+    }
+    .przycisk:nth-child(1):hover{
+      filter: drop-shadow(0 0 0.75rem crimson);
+    }
+    .przycisk:nth-child(2):hover{
+      filter: drop-shadow(0 0 0.75rem yellow);
+    }
+    .przycisk:nth-child(3):hover{
+      filter: drop-shadow(0 0 0.75rem blue);
+    }
+  </style>
+
+</head>
+<body>
+  <div id="nav">
+    <button onclick="UstawZawartosc(0)" class="przycisk"></button>
+    <button onclick="UstawZawartosc(1)" class="przycisk"></button>
+    <button onclick="UstawZawartosc(2)" class="przycisk"></button>
+  </div>
+  <div id="kontener">
+    <div id="logo"></div>
+    <div id="nazwa"></div>
+    <div id="opis"></div>
+  </div>
+  <script>
+    let stanglobalny =4;
+    let technologie = [
+    {
+      id:1,
+      nazwa:"HTML - Hyper Text Markup Language",
+      opis:"podstawowy język znaczników, który służy do tworzenia struktury stron internetowych.<br>Umożliwia on definiowanie elementów takich jak nagłówki, akapity, obrazy czy linki, które są interpretowane przez przeglądarki internetowe.",
+      logo:"./img/html.svg"
+    },
+    {
+      id:2,
+      nazwa:"JS - JavaScript",
+      opis:"o język programowania, który umożliwia dodawanie interaktywności i dynamiki do stron internetowych.<br>Dzięki JS, strony mogą reagować na akcje użytkownika, takie jak kliknięcia, zmieniać zawartość w czasie rzeczywistym czy komunikować się z serwerem bez przeładowania strony.",
+      logo:"./img/js.svg"
+    },
+    {
+      id:3,
+      nazwa:"CSS - Cascade Style Sheets",
+      opis:"to język służący do stylizowania i formatowania wyglądu stron internetowych.<br>Pozwala na kontrolowanie układu, kolorów, czcionek i innych elementów wizualnych, umożliwiając tworzenie estetycznych i responsywnych stron, które dobrze wyglądają na różnych urządzeniach.",
+      logo:"./img/css.svg"
+    }]
+    const logo = document.querySelector("div#logo")
+    const nazwa = document.querySelector("div#nazwa")
+    const opis = document.querySelector("div#opis")
+    function UstawZawartosc(stan){
+      const h1 = document.querySelector('h1#brak_stanu')
+      logo.innerHTML = `<img src="${technologie[stan].logo}" width="400px" alt="${technologie[stan].nazwa}">`
+      nazwa.innerHTML = `<h2  >${technologie[stan].nazwa}</h2>`
+      opis.innerHTML = `<p>${technologie[stan].opis}</p>`
+      stanglobalny=stan
+      if(h1){
+        h1.style.display="none"
+      }
+    }
+    if(stanglobalny===4) {document.write("<h1 id=\"brak_stanu\">Wybierz technologie o której chcesz sie dowiedzieć!</h1>");console.log(`${stanglobalny}  `)}
+    </script>
+</body>
+</html>
